@@ -34,7 +34,6 @@ async def local_phi3_response(body: Phi3Model):
           delta = chunk.choices[0].delta  # Access delta as an attribute, not a dictionary
           content = getattr(delta, "content", "")  # Safely access content attribute
           if content:
-            print(content)
             await asyncio.sleep(0.1)
             yield content
       
