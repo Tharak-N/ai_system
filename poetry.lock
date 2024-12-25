@@ -678,6 +678,17 @@ files = [
 ]
 
 [[package]]
+name = "diskcache"
+version = "5.6.3"
+description = "Disk Cache -- Disk and file backed persistent cache."
+optional = false
+python-versions = ">=3"
+files = [
+    {file = "diskcache-5.6.3-py3-none-any.whl", hash = "sha256:5e31b2d5fbad117cc363ebaf6b689474db18a1f6438bc82358b024abd4c2ca19"},
+    {file = "diskcache-5.6.3.tar.gz", hash = "sha256:2c3a3fa2743d8535d832ec61c2054a1641f41775aa7c556758a109941e33e4fc"},
+]
+
+[[package]]
 name = "distro"
 version = "1.9.0"
 description = "Distro - an OS platform information API"
@@ -1116,6 +1127,56 @@ files = [
 
 [package.extras]
 protobuf = ["grpcio-tools (>=1.68.1)"]
+
+[[package]]
+name = "guidance"
+version = "0.1.16"
+description = "A guidance language for controlling large language models."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "guidance-0.1.16-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:a9929e0265a0ba4f166f3fcab2204e6330b4b1a10751e4e3e3c607704aaa8064"},
+    {file = "guidance-0.1.16-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:d71bca5d1e1c0504e62e5d5490f1273bc9f7bbd43cd358c3d0149bb49b96103e"},
+    {file = "guidance-0.1.16-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:070e3e70c6a982496190fb70b59ba0ce0d70d7fc47447616ee2b543cb70ac0f4"},
+    {file = "guidance-0.1.16-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:e72d0895f2ea575a42677edadf3bbc065a052c267302ae6f166ebf0fe4684b9a"},
+    {file = "guidance-0.1.16-cp310-cp310-win_amd64.whl", hash = "sha256:2f9b47161d18d72805502343a546dc82e09172638210f3a2065851b3ced9cb79"},
+    {file = "guidance-0.1.16-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:5dcbde1921557d1375b7e3a1ebe9ea6b0798d8f41c0e0e1ea799ea7a03ab539b"},
+    {file = "guidance-0.1.16-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:2681053ab0dd8686aada822b5d90917340547b1f822c0e6814bd64476acedefc"},
+    {file = "guidance-0.1.16-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:56c780bc96da09e2dade46d9a9ed6513e087caf2a21ee86978ae3e0f0cab8862"},
+    {file = "guidance-0.1.16-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:2217f545b692dfdd40c7db1d8993c6482bfb0e321c9e51c106b3b505ed87c105"},
+    {file = "guidance-0.1.16-cp311-cp311-win_amd64.whl", hash = "sha256:a7fe0977373c5d7ce9bf1dafd67b827b6a144c385e8095867e86471e20476497"},
+    {file = "guidance-0.1.16-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:65ec377ae55726d4ed203d206e1a55c170564abafcb2860f8b3f0fa9ae78db61"},
+    {file = "guidance-0.1.16-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:2ab89678b1351da50db98e39ddddec6986c5c9ae2b82f410d3abb9fa1b5cd747"},
+    {file = "guidance-0.1.16-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:141ab670201dd64412649fb41a520639e79876d65c00ee6385e8b935acf4f325"},
+    {file = "guidance-0.1.16-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:686a2abe251d33f82355b6d63b9a7f10842cf61ecb3b23b3ebe585fc5bdea5dc"},
+    {file = "guidance-0.1.16-cp312-cp312-win_amd64.whl", hash = "sha256:d928c1c51890ec2070ba15b2600851a78729b0f29e4eeb57ba171e1a7817d1b6"},
+    {file = "guidance-0.1.16-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:b3f63b6eb73a1fd7d853de475f6c5f32921f0b2c37e85b2ba02e6af89a7d2e0a"},
+    {file = "guidance-0.1.16-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:d9ea409719894479454ab8a349036e43c58862c06bce195c00bb5741e887980a"},
+    {file = "guidance-0.1.16-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:40edb47ef2ba8538ea5d04f8fefa5abd57a70dd8fd99204463d0e7aa64533baf"},
+    {file = "guidance-0.1.16-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:8cd8f1df6aaedbab285e57fe2df960b696f54b962ee7f6af6ae46d49ffbc4c19"},
+    {file = "guidance-0.1.16-cp39-cp39-win_amd64.whl", hash = "sha256:2521fc8fae24058d10eeecceb5d7c3773e2e6fc77e1a2582da6a46174018c852"},
+    {file = "guidance-0.1.16.tar.gz", hash = "sha256:ee74539bcc4da8850a10ebc6efa69f686d457f43950680ef463ac1d8965fdbb8"},
+]
+
+[package.dependencies]
+diskcache = "*"
+numpy = "*"
+ordered-set = "*"
+platformdirs = "*"
+protobuf = "*"
+pydantic = "*"
+requests = "*"
+tiktoken = ">=0.3"
+
+[package.extras]
+all = ["fastapi-slim", "jsonschema", "openai (>=1.0)", "uvicorn"]
+azureai = ["openai (>=1.0)"]
+bench = ["huggingface-hub", "json-stream", "langchain-benchmarks", "langchain-community", "langsmith", "llama-cpp-python", "pandas", "powerlift", "setuptools"]
+docs = ["huggingface-hub", "ipykernel", "ipython", "llama-cpp-python", "nbsphinx", "numpydoc", "sphinx", "sphinx-rtd-theme"]
+openai = ["openai (>=1.0)"]
+schemas = ["jsonschema"]
+server = ["fastapi-slim", "uvicorn"]
+test = ["azure-identity", "bitsandbytes", "jupyter", "mypy (==1.9.0)", "papermill", "pytest", "pytest-cov", "torch", "transformers", "types-jsonschema", "types-protobuf", "types-regex", "types-requests"]
 
 [[package]]
 name = "h11"
@@ -2352,6 +2413,20 @@ deprecated = ">=1.2.6"
 opentelemetry-api = "1.29.0"
 
 [[package]]
+name = "ordered-set"
+version = "4.1.0"
+description = "An OrderedSet is a custom MutableSet that remembers its order, so that every"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "ordered-set-4.1.0.tar.gz", hash = "sha256:694a8e44c87657c59292ede72891eb91d34131f6531463aab3009191c77364a8"},
+    {file = "ordered_set-4.1.0-py3-none-any.whl", hash = "sha256:046e1132c71fcf3330438a539928932caf51ddbc582496833e23de611de14562"},
+]
+
+[package.extras]
+dev = ["black", "mypy", "pytest"]
+
+[[package]]
 name = "orjson"
 version = "3.10.12"
 description = "Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy"
@@ -2619,6 +2694,22 @@ mic = ["olefile"]
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 typing = ["typing-extensions"]
 xmp = ["defusedxml"]
+
+[[package]]
+name = "platformdirs"
+version = "4.3.6"
+description = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "platformdirs-4.3.6-py3-none-any.whl", hash = "sha256:73e575e1408ab8103900836b97580d5307456908a03e92031bab39e4554cc3fb"},
+    {file = "platformdirs-4.3.6.tar.gz", hash = "sha256:357fb2acbc885b0419afd3ce3ed34564c13c9b95c89360cd9563f73aa5e2b907"},
+]
+
+[package.extras]
+docs = ["furo (>=2024.8.6)", "proselint (>=0.14)", "sphinx (>=8.0.2)", "sphinx-autodoc-typehints (>=2.4)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.3.2)", "pytest-cov (>=5)", "pytest-mock (>=3.14)"]
+type = ["mypy (>=1.11.2)"]
 
 [[package]]
 name = "propcache"
@@ -3274,6 +3365,17 @@ files = [
 click = ">=8.1.7"
 rich = ">=13.7.1"
 typing-extensions = ">=4.12.2"
+
+[[package]]
+name = "scalar-fastapi"
+version = "1.0.3"
+description = "This plugin provides an easy way to render a beautiful API reference based on a OpenAPI/Swagger file with FastAPI."
+optional = false
+python-versions = "*"
+files = [
+    {file = "scalar_fastapi-1.0.3-py3-none-any.whl", hash = "sha256:4a47a140795097ad034518ce0e32940f2c54f0f4bc60e4c3289ca30a7e6f954d"},
+    {file = "scalar_fastapi-1.0.3.tar.gz", hash = "sha256:9e9cb8398e298cd435a0171eebe1675b8899eb21e47c238db0d48783143f0ffb"},
+]
 
 [[package]]
 name = "scikit-learn"
@@ -4293,4 +4395,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.12,<3.13"
-content-hash = "838cb5589422a443166e5b6b9127aaa0948667ab9f40141015176cefe568a00b"
+content-hash = "1ccfaf4871c8534e98b1719a8b4a7d80ad525a20fc45c334d6e9623dfd3aabe0"
