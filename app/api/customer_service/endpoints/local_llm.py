@@ -31,8 +31,8 @@ async def local_phi3_response(body: Phi3Model):
     async def async_generator():
       for chunk in completion: 
         if hasattr(chunk, "choices") and len(chunk.choices) > 0:
-          delta = chunk.choices[0].delta  # Access delta as an attribute, not a dictionary
-          content = getattr(delta, "content", "")  # Safely access content attribute
+          delta = chunk.choices[0].delta
+          content = getattr(delta, "content", "") 
           if content:
             await asyncio.sleep(0.1)
             yield content
