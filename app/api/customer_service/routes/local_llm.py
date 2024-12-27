@@ -8,7 +8,7 @@ import asyncio
 
 router = APIRouter(
   prefix="/local/phi3",
-  tags=["phi3"],
+  tags=[],
   dependencies=[]
 )
 

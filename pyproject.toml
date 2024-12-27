@@ -16,6 +16,11 @@ arize-phoenix = "^7.3.2"
 openinference-instrumentation-openai = "^0.1.18"
 guidance = "^0.1.16"
 scalar-fastapi = "^1.0.3"
+botbuilder-core = "^4.16.2"
+aiohttp = "^3.11.11"
+asyncio = "^3.4.3"
+cookiecutter = "^2.6.0"
+datetime = "^5.5"
 
 
 [build-system]

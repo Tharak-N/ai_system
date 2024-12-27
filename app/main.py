@@ -18,7 +18,10 @@ trace_provider = register(
 
 OpenAIInstrumentor().instrument(trace_provider=trace_provider)
 
-app = FastAPI()
+app = FastAPI(
+  title="AI System",
+  description="An AI system for all POC's"
+)
 
 app.add_middleware(
   CORSMiddleware,

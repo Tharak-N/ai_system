@@ -1,7 +1,7 @@
 
 
 from fastapi import APIRouter
-from .endpoints import local_llm
+from .routes import local_llm, teams_bot
 
 router = APIRouter(
   prefix="/customer-service",
@@ -11,4 +11,4 @@ router = APIRouter(
 )
 
 router.include_router(local_llm.router)
-
+router.include_router(teams_bot.router)
