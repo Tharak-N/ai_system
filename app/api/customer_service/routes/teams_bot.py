@@ -59,6 +59,7 @@ ADAPTER.on_turn_error = on_error
 
 BOT = MyBot()
 
+
 @router.post("/", response_model=None)
 async def bot(request: Request):
     if "application/json" in request.headers["Content-Type"]:
