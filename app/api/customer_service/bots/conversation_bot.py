@@ -1,7 +1,4 @@
 
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
-
 import os
 import json
 
@@ -63,7 +60,7 @@ class TeamsConversationBot(TeamsActivityHandler):
         return
 
     async def _mention_adaptive_card_activity(self, turn_context: TurnContext):
-        TeamsChannelAccount: member = None
+        TeamsChannelAccount = None
         try:
             member = await TeamsInfo.get_member(
                 turn_context, turn_context.activity.from_property.id
@@ -157,7 +154,7 @@ class TeamsConversationBot(TeamsActivityHandler):
         await turn_context.update_activity(updated_activity)
 
     async def _get_member(self, turn_context: TurnContext):
-        TeamsChannelAccount: member = None
+        TeamsChannelAccount = None
         try:
             member = await TeamsInfo.get_member(
                 turn_context, turn_context.activity.from_property.id
