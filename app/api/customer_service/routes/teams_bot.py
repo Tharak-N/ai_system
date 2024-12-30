@@ -13,7 +13,7 @@ from botbuilder.core import (
 from datetime import datetime
 from ..utilities.config import DefaultConfig
 from ..bots.echo_bot import MyBot
-
+from ..bots.conversation_bot import TeamsConversationBot
 
 import traceback
 import sys
@@ -58,7 +58,7 @@ async def on_error(context: TurnContext, error: Exception):
 ADAPTER.on_turn_error = on_error
 
 BOT = MyBot()
-
+CONVERSATION_BOT = TeamsConversationBot(app_id=CONFIG.APP_ID, app_password=CONFIG.APP_PASSWORD)
 
 @router.post("/", response_model=None)
 async def bot(request: Request):

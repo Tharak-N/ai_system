@@ -12,7 +12,7 @@ from botbuilder.schema import CardAction, HeroCard, Mention, ConversationParamet
 from botbuilder.schema.teams import TeamInfo, TeamsChannelAccount
 from botbuilder.schema._connector_client_enums import ActionTypes
 
-ADAPTIVECARDTEMPLATE = "resources/UserMentionCardTemplate.json"
+ADAPTIVECARDTEMPLATE = "../../utilities/bot_templates/UserMentionCardTemplate.json"
 
 class TeamsConversationBot(TeamsActivityHandler):
     def __init__(self, app_id: str, app_password: str):
