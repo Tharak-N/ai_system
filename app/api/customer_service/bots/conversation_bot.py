@@ -34,7 +34,7 @@ class TeamsConversationBot(TeamsActivityHandler):
 
         if "mention me" in text:
             await self._mention_adaptive_card_activity(turn_context)
-            return
+            # return
 
         if "mention" in text:
             await self._mention_activity(turn_context)
@@ -65,6 +65,7 @@ class TeamsConversationBot(TeamsActivityHandler):
             member = await TeamsInfo.get_member(
                 turn_context, turn_context.activity.from_property.id
             )
+            # return member
         except Exception as e:
             if "MemberNotFoundInConversation" in e.args[0]:
                 await turn_context.send_activity("Member not found.")

@@ -1,0 +1,66 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0",
+  "body": [
+      {
+          "type": "Image",
+          "url": "https://innovatily.com/wp-content/themes/innovatily/cst/img/general/logo-black.svg",
+          "backgroundColor": "b",
+          "width": "0px",
+          "horizontalAlignment": "Left",
+          "selectAction": {
+              "type": "Action.OpenUrl",
+              "tooltip": "Innovatily ",
+              "url": "https://innovatily.com/",
+              "role": "Link",
+              "title": "I"
+          }
+      },
+      {
+          "type": "TextBlock",
+          "text": "Service Bot",
+          "wrap": true,
+          "horizontalAlignment": "Left",
+          "height": "stretch",
+          "maxLines": 0,
+          "style": "heading",
+          "fontType": "Default",
+          "size": "Large",
+          "weight": "Bolder",
+          "color": "Dark",
+          "isSubtle": false
+      },
+      {
+          "type": "Container",
+          "items": [
+              {
+                  "type": "TextBlock",
+                  "text": "A service chatbot designed to handle customer queries efficiently, providing instant support, resolving issues, and enhancing user satisfaction.",
+                  "wrap": true,
+                  "spacing": "Small",
+                  "horizontalAlignment": "Left",
+                  "maxLines": 0,
+                  "style": "default",
+                  "fontType": "Default",
+                  "size": "Small"
+              }
+          ]
+      },
+      {
+          "type": "ActionSet",
+          "actions": [
+              {
+                  "type": "Action.Submit",
+                  "title": "Get Started with BOT",
+                  "style": "positive",
+                  "role": "Button",
+                  "associatedInputs": "none",
+                  "data": {
+                    "action": "get_started"
+                  }
+              }
+          ]
+      }
+  ]
+}

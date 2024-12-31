@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from .routes import local_llm, teams_bot
 
 router = APIRouter(
-  prefix="/customer-service",
+  prefix="/customerservice",
   tags=["customer-service"],
   dependencies=[],
   responses={404: {"description": "Customer service not found"}}
