@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
     "manifestVersion": "1.19",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "id": "cff8e13d-2909-492c-9da2-62222474f7e2",
     "developer": {
       "name": "Innovatily",
@@ -26,10 +26,9 @@
       {
         "botId": "cff8e13d-2909-492c-9da2-62222474f7e2",
         "scopes": [
-          "personal",
-          "groupChat",
-          "team"
+          "personal"
         ],
+        "needsChannelSelector": false,
         "isNotificationOnly": false,
         "supportsCalling": false,
         "supportsVideo": false,
@@ -46,6 +45,7 @@
         ]
       }
     ],
+    "isFullScreen": true,
     "permissions": [
       "identity",
       "messageTeamMembers"

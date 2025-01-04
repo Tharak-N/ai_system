@@ -1,12 +1,12 @@
 {
   "type": "AdaptiveCard",
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.0",
+  "version": "1.4",
   "body": [
     {
         "type": "Image",
         "url": "https://5eb2-2409-40f0-1044-27e3-ab33-cf7b-a6e2-e992.ngrok-free.app/static/Innovatily-ico-512x512-1.png",
-        "width": "150px",
+        "width": "40px",
         "horizontalAlignment": "Left",
         "selectAction": {
             "type": "Action.OpenUrl",
