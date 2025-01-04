@@ -56,10 +56,9 @@
                   "type": "Action.Submit",
                   "title": "Get Started with BOT",
                   "style": "positive",
-                    "role": "Button",
-                    "associatedInputs": "none",
                     "data": {
-                        "action": "user_message"
+                        "action": "imBack",
+                        "message": "get_started"
                     }
                     
               }

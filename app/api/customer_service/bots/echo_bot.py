@@ -21,19 +21,18 @@ class MyBot(ActivityHandler):
     async def on_message_activity(self, turn_context: TurnContext):
         if turn_context.activity.value:
             action_value = turn_context.activity.value.get("action")
-            # await turn_context.send_activity(
-            #     Activity(
-            #         type=ActivityTypes.message,
-            #         text=action_value,
-            #         from_property=turn_context.activity.from_property,  
-            #         recipient=turn_context.activity.recipient          
-            #     )
-            # )
-            # await turn_context.send_activity(user_message.text)
-            if action_value == "user_message":
-                await self._add_typing_activity(turn_context=turn_context)
-                user_input = turn_context.activity.value.get("userInput", "No input provided")
-                print(user_input)
+            await self._add_typing_activity(turn_context=turn_context)
+
+            if action_value == "imBack":
+                # user_message = Activity(
+                #     type=ActivityTypes.message,
+                #     from_property=turn_context.activity.from_property,  
+                #     text="action_value",
+                    
+                #     # recipient=turn_context.activity.recipient          
+                # )
+                
+                # await turn_context.send_activity(user_message)
                 await turn_context.send_activity("Sure, Let's get started. Please provide me some inputs on which you need information")
         
         else:
@@ -48,7 +47,6 @@ class MyBot(ActivityHandler):
     ):
         for member in members_added:
             if member.id != turn_context.activity.recipient.id:
-                print(member)
                 await turn_context.send_activity(
                     f"Hi there"
                 )
