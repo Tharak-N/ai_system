@@ -1,11 +1,11 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
     "manifestVersion": "1.19",
-    "version": "1.0.0",
-    "id": "370ddeb8-18bd-42c9-bab1-f34abc5e8be0",
+    "version": "1.0.2",
+    "id": "cff8e13d-2909-492c-9da2-62222474f7e2",
     "developer": {
-      "name": "teamsConversationBot",
-      "websiteUrl": "https://www.microsoft.com",
+      "name": "Innovatily",
+      "websiteUrl": "https://innovatily.com/",
       "privacyUrl": "https://www.teams.com/privacy",
       "termsOfUseUrl": "https://www.teams.com/termsofuser"
     },
@@ -14,8 +14,8 @@
       "color": "color.png"
     },
     "name": {
-      "short": "TeamsConversationBot",
-      "full": "TeamsConversationBot"
+      "short": "QuarkBot",
+      "full": "QuarkBot"
     },
   "description": {
     "short": "Demo bot for Teams showing conversation events with adaptive card support.",
@@ -24,7 +24,7 @@
     "accentColor": "#FFFFFF",
     "bots": [
       {
-        "botId": "370ddeb8-18bd-42c9-bab1-f34abc5e8be0",
+        "botId": "cff8e13d-2909-492c-9da2-62222474f7e2",
         "scopes": [
           "personal",
           "groupChat",
@@ -63,5 +63,5 @@
       "identity",
       "messageTeamMembers"
     ],
-    "validDomains": ["16ef-116-66-189-175.ngrok-free.app"]
+    "validDomains": ["5eb2-2409-40f0-1044-27e3-ab33-cf7b-a6e2-e992.ngrok-free.app"]
   }

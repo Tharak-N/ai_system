@@ -11,6 +11,7 @@ from botbuilder.schema import ChannelAccount, Activity, ActivityTypes
 import json
 import os
 import asyncio
+import aiohttp
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INTRO_CARD_TEMPLATE_FILE_PATH = os.path.join(BASE_DIR, '../utilities/bot_templates/IntroCardTemplate.json')
@@ -20,23 +21,25 @@ class MyBot(ActivityHandler):
     async def on_message_activity(self, turn_context: TurnContext):
         if turn_context.activity.value:
             action_value = turn_context.activity.value.get("action")
-            # await turn_context.send_activity(
-            #     Activity(
-            #         type=ActivityTypes.message,
-            #         text=action_value,
-            #         from_property=turn_context.activity.from_property,  
-            #         recipient=turn_context.activity.recipient          
-            #     )
-            # )
+            await turn_context.send_activity(
+                Activity(
+                    type=ActivityTypes.message,
+                    text=action_value,
+                    from_property=turn_context.activity.from_property,  
+                    recipient=turn_context.activity.recipient          
+                )
+            )
             # await turn_context.send_activity(user_message.text)
-            if action_value == "get_started":
+            if action_value == "user_message":
                 await self._add_typing_activity(turn_context=turn_context)
+                user_input = turn_context.activity.value.get("userInput", "No input provided")
+                print(user_input)
                 await turn_context.send_activity("Sure, Let's get started. Please provide me some inputs on which you need information")
         
         else:
             await self._add_typing_activity(turn_context=turn_context)
-            # add the RAG over here
-            await turn_context.send_activity(f"You said '{ turn_context.activity.text }'")
+            http_response = await self._fetch_data(turn_context.activity.text)
+            await turn_context.send_activity(http_response)
 
     async def on_members_added_activity(
         self,
@@ -45,6 +48,7 @@ class MyBot(ActivityHandler):
     ):
         for member in members_added:
             if member.id != turn_context.activity.recipient.id:
+                print(member)
                 await turn_context.send_activity(
                     f"Hi there, {member.name}"
                 )
@@ -70,3 +74,14 @@ class MyBot(ActivityHandler):
         typing_activity = Activity(type=ActivityTypes.typing)
         await turn_context.send_activity(typing_activity)
         await asyncio.sleep(0.2)
+
+    async def _fetch_data(self, query:str):
+        api_url = f"http://18.209.65.205:5000/api/answer?collectionName=polaris&input=${query}"
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(api_url) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data.get('answer', "")
+                else:
+                    return "Something went wrong!"

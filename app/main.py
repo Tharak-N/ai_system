@@ -1,6 +1,7 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from scalar_fastapi import get_scalar_api_reference
 
 from phoenix.otel import register
@@ -33,6 +34,7 @@ app.add_middleware(
 
 app.include_router(customer_service_module.router)
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def root():
