@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -14,31 +13,30 @@ import os
 os.environ["PHOENIX_CLIENT_HEADERS"] = f"api_key={os.environ.get("PHOENIX_API_KEY")}"
 
 trace_provider = register(
-  project_name="ai_system",
+    project_name="ai_system",
 )
 
 OpenAIInstrumentor().instrument(trace_provider=trace_provider)
 
-app = FastAPI(
-  title="AI System",
-  description="An AI system for all POC's"
-)
+app = FastAPI(title="AI System", description="An AI system for all POC's")
 
 app.add_middleware(
-  CORSMiddleware,
-  allow_origins=["*"],
-  allow_credentials=True,
-  allow_methods=["*"],
-  allow_headers=["*"]
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(customer_service_module.router)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 @app.get("/")
 def root():
-  return "hola!"
+    return "hola!"
+
 
 @app.get("/scalar", include_in_schema=False)
 async def scalar_html():

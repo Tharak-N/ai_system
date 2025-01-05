@@ -1,15 +1,22 @@
-
 import os
 import json
 
 from typing import List
 from botbuilder.core import CardFactory, TurnContext, MessageFactory
 from botbuilder.core.teams import TeamsActivityHandler, TeamsInfo
-from botbuilder.schema import CardAction, HeroCard, Mention, ConversationParameters, Attachment, Activity
+from botbuilder.schema import (
+    CardAction,
+    HeroCard,
+    Mention,
+    ConversationParameters,
+    Attachment,
+    Activity,
+)
 from botbuilder.schema.teams import TeamInfo, TeamsChannelAccount
 from botbuilder.schema._connector_client_enums import ActionTypes
 
 ADAPTIVECARDTEMPLATE = "../../utilities/bot_templates/UserMentionCardTemplate.json"
+
 
 class TeamsConversationBot(TeamsActivityHandler):
     def __init__(self, app_id: str, app_password: str):
@@ -76,15 +83,21 @@ class TeamsConversationBot(TeamsActivityHandler):
         card_path = os.path.join(os.getcwd(), ADAPTIVECARDTEMPLATE)
         with open(card_path, "rb") as in_file:
             template_json = json.load(in_file)
-        
+
         for t in template_json["body"]:
-            t["text"] = t["text"].replace("${userName}", member.name)        
+            t["text"] = t["text"].replace("${userName}", member.name)
         for e in template_json["msteams"]["entities"]:
             e["text"] = e["text"].replace("${userName}", member.name)
-            e["mentioned"]["id"] = e["mentioned"]["id"].replace("${userUPN}", member.user_principal_name)
-            e["mentioned"]["id"] = e["mentioned"]["id"].replace("${userAAD}", member.additional_properties["aadObjectId"])
-            e["mentioned"]["name"] = e["mentioned"]["name"].replace("${userName}", member.name)
-        
+            e["mentioned"]["id"] = e["mentioned"]["id"].replace(
+                "${userUPN}", member.user_principal_name
+            )
+            e["mentioned"]["id"] = e["mentioned"]["id"].replace(
+                "${userAAD}", member.additional_properties["aadObjectId"]
+            )
+            e["mentioned"]["name"] = e["mentioned"]["name"].replace(
+                "${userName}", member.name
+            )
+
         adaptive_card_attachment = Activity(
             attachments=[CardFactory.adaptive_card(template_json)]
         )
@@ -109,7 +122,11 @@ class TeamsConversationBot(TeamsActivityHandler):
                 text="messageallmembers",
             ),
             CardAction(type=ActionTypes.message_back, title="Who am I?", text="whoami"),
-            CardAction(type=ActionTypes.message_back, title="Find me in Adaptive Card", text="mention me"),
+            CardAction(
+                type=ActionTypes.message_back,
+                title="Find me in Adaptive Card",
+                text="mention me",
+            ),
             CardAction(
                 type=ActionTypes.message_back, title="Delete card", text="deletecard"
             ),

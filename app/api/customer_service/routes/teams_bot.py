@@ -1,7 +1,7 @@
-
 from fastapi import APIRouter, Request, Response
 from fastapi.responses import JSONResponse
 from aiohttp import web
+
 # from aiohttp.web import , json_response
 from botbuilder.schema import Activity, ActivityTypes
 from botbuilder.core import (
@@ -20,16 +20,17 @@ import sys
 
 
 router = APIRouter(
-  prefix="/teams/bot",
-  tags=[],
-  dependencies=[],
-  responses={404: {"description":"teams bot not found"}}
+    prefix="/teams/bot",
+    tags=[],
+    dependencies=[],
+    responses={404: {"description": "teams bot not found"}},
 )
 
 
 CONFIG = DefaultConfig()
 SETTINGS = BotFrameworkAdapterSettings(CONFIG.APP_ID, CONFIG.APP_PASSWORD)
 ADAPTER = BotFrameworkAdapter(SETTINGS)
+
 
 async def on_error(context: TurnContext, error: Exception):
     print(f"\n [on_turn_error] unhandled error: {error}", file=sys.stderr)
@@ -58,7 +59,10 @@ async def on_error(context: TurnContext, error: Exception):
 ADAPTER.on_turn_error = on_error
 
 BOT = MyBot()
-CONVERSATION_BOT = TeamsConversationBot(app_id=CONFIG.APP_ID, app_password=CONFIG.APP_PASSWORD)
+CONVERSATION_BOT = TeamsConversationBot(
+    app_id=CONFIG.APP_ID, app_password=CONFIG.APP_PASSWORD
+)
+
 
 @router.post("/", response_model=None)
 async def bot(request: Request):
@@ -67,10 +71,11 @@ async def bot(request: Request):
     else:
         return Response(status=415)
     activity = Activity().deserialize(body)
-    auth_header = request.headers["Authorization"] if "Authorization" in request.headers else ""
+    auth_header = (
+        request.headers["Authorization"] if "Authorization" in request.headers else ""
+    )
     response = await ADAPTER.process_activity(activity, auth_header, BOT.on_turn)
     print("the response from echo bot is", response)
-    if response: 
+    if response:
         return JSONResponse(content=response.body, status_code=response.status)
     return JSONResponse(status_code=201, content={})
-

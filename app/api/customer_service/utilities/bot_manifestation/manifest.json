@@ -1,13 +1,13 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
     "manifestVersion": "1.19",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "id": "cff8e13d-2909-492c-9da2-62222474f7e2",
     "developer": {
       "name": "Innovatily",
       "websiteUrl": "https://innovatily.com/",
-      "privacyUrl": "https://www.teams.com/privacy",
-      "termsOfUseUrl": "https://www.teams.com/termsofuser"
+      "privacyUrl": "https://innovatily.com/privacy-policy/",
+      "termsOfUseUrl": "https://innovatily.com/case-studies/"
     },
     "icons": {
       "outline": "outline.png",
@@ -47,5 +47,5 @@
       "identity",
       "messageTeamMembers"
     ],
-    "validDomains": ["5eb2-2409-40f0-1044-27e3-ab33-cf7b-a6e2-e992.ngrok-free.app"]
+    "validDomains": ["0ef7-2409-40f0-1044-27e3-60c3-9a2d-51dc-26f1.ngrok-free.app"]
   }
