@@ -8,7 +8,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: psf/black@stable
-        with:
-          # options: "--check --verbose"
-          src: "./app"
+
+      - name: Running Black
+        run: black ./app
+
+      - name: Check for Changes
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add .
+            git commit -m "Auto-format code with Black"
+            git push
+          else
+            echo "No changes to commit."
+          fi
       
