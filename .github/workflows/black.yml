@@ -14,7 +14,7 @@ jobs:
       - name: Running Black
         run: black ./app
 
-      - name: Check for Changes
+      - name: Committing the changes
         run: |
           if [[ `git status --porcelain` ]]; then
             git config --global user.name "GitHub Actions"
