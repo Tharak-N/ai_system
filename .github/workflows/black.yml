@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: psf/black@stable
+      
+      - name: Installing the Black
+        run: pip install black
 
       - name: Running Black
         run: black ./app
