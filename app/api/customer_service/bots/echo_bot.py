@@ -11,7 +11,7 @@ import aiohttp
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 INTRO_CARD_TEMPLATE_FILE_PATH = os.path.join(
-BASE_DIR, "../utilities/bot_templates/IntroCardTemplate.json"
+    BASE_DIR, "../utilities/bot_templates/IntroCardTemplate.json"
 )
 
 
