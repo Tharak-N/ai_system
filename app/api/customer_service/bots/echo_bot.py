@@ -35,12 +35,15 @@ class MyBot(ActivityHandler):
                 await turn_context.send_activity(
                     "Sure, Let's get started. Please provide me some inputs on which you need information"
                 )
-                # await turn_context.send_activity("**Hello, Teams!**\n\n- **Bold**\n- *Italic*\n- [Link](https://example.com)\n\n```\ndef greet():\n    print(\"Hello!\")\n```")
 
         else:
-            await self._add_typing_activity(turn_context=turn_context)
-            http_response = await self._fetch_data(turn_context.activity.text)
-            await turn_context.send_activity(http_response)
+
+            if(turn_context.activity.attachments and len(turn_context.activity.attachments) > 0 ):
+                await self.handle_attachments(turn_context)            
+            else:
+                await self._add_typing_activity(turn_context=turn_context)
+                http_response = await self._fetch_data(turn_context.activity.text)
+                await turn_context.send_activity(http_response)
 
     async def on_members_added_activity(
         self, members_added: ChannelAccount, turn_context: TurnContext
@@ -55,20 +58,11 @@ class MyBot(ActivityHandler):
 
                 await self.send_intro_card(turn_context=turn_context)
 
-    async def handle_attachment(
-        self, attachment: Attachment, turn_context: TurnContext
+    async def handle_attachments(
+        self, turn_context: TurnContext
     ):
-        if (
-            attachment.content_type
-            == "application/vnd.microsoft.teams.file.download.info"
-        ):
-            download_url = attachment.content["downloadUrl"]
-            file_name = attachment.name
-            file_type = attachment.content_type
-
-            await turn_context.send_activity(f"file received")
-        else:
-            await turn_context.send_activity("Unsupported attachment type.")
+        for attachement in turn_context.activity.attachments:
+            print(attachement)
 
     async def send_intro_card(self, turn_context: TurnContext):
         template_json = ""
