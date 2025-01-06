@@ -59,7 +59,7 @@ class MyBot(ActivityHandler):
                 #     f"Welcome to the Customer Chat Service"
                 # )
 
-                await self.send_intro_card(turn_context=turn_context)
+                # await self.send_intro_card(turn_context=turn_context)
 
     async def handle_attachments(self, turn_context: TurnContext):
         for attachement in turn_context.activity.attachments:
