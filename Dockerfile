@@ -14,7 +14,7 @@ RUN python3 -m pip install --upgrade pip \
 
 COPY pyproject.toml poetry.lock .
 
-RUN poetry install 
+RUN poetry install --no-root
 
 COPY . .
 

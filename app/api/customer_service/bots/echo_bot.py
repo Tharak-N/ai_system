@@ -88,9 +88,13 @@ class MyBot(ActivityHandler):
         api_url = f"http://18.209.65.205:5000/api/answer?collectionName=polaris&input=${query}"
 
         async with aiohttp.ClientSession() as session:
-            async with session.get(api_url) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    return data.get("answer", "")
-                else:
-                    return "Something went wrong!"
+            try:
+                async with session.get(api_url) as response:
+                    print("the resposne is", response)
+                    if response.status == 200:
+                        data = await response.json()
+                        return data.get("answer", "")
+                    else:
+                        return "Something went wrong!"
+            except Exception as e:
+                return "Unable to process the request"
