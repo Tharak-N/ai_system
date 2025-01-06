@@ -55,11 +55,15 @@ class MyBot(ActivityHandler):
 
                 await self.send_intro_card(turn_context=turn_context)
 
-
-    async def handle_attachment(self, attachment: Attachment, turn_context: TurnContext):
-        if attachment.content_type == "application/vnd.microsoft.teams.file.download.info":
-            download_url = attachment.content['downloadUrl']
-            file_name  = attachment.name
+    async def handle_attachment(
+        self, attachment: Attachment, turn_context: TurnContext
+    ):
+        if (
+            attachment.content_type
+            == "application/vnd.microsoft.teams.file.download.info"
+        ):
+            download_url = attachment.content["downloadUrl"]
+            file_name = attachment.name
             file_type = attachment.content_type
 
             await turn_context.send_activity(f"file received")
