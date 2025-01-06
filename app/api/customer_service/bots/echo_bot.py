@@ -38,12 +38,12 @@ class MyBot(ActivityHandler):
 
         else:
 
-            if (
-                turn_context.activity.attachments
-                and len(turn_context.activity.attachments) > 0
-            ):
-                await self.handle_attachments(turn_context)
-            else:
+            # if (
+            #     turn_context.activity.attachments
+            #     and len(turn_context.activity.attachments) > 0
+            # ):
+            #     await self.handle_attachments(turn_context)
+            # else:
                 await self._add_typing_activity(turn_context=turn_context)
                 http_response = await self._fetch_data(turn_context.activity.text)
                 await turn_context.send_activity(http_response)
@@ -59,7 +59,7 @@ class MyBot(ActivityHandler):
                 #     f"Welcome to the Customer Chat Service"
                 # )
 
-                # await self.send_intro_card(turn_context=turn_context)
+                await self.send_intro_card(turn_context=turn_context)
 
     async def handle_attachments(self, turn_context: TurnContext):
         for attachement in turn_context.activity.attachments:
