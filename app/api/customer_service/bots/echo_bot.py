@@ -44,9 +44,9 @@ class MyBot(ActivityHandler):
             # ):
             #     await self.handle_attachments(turn_context)
             # else:
-                await self._add_typing_activity(turn_context=turn_context)
-                http_response = await self._fetch_data(turn_context.activity.text)
-                await turn_context.send_activity(http_response)
+            await self._add_typing_activity(turn_context=turn_context)
+            http_response = await self._fetch_data(turn_context.activity.text)
+            await turn_context.send_activity(http_response)
 
     async def on_members_added_activity(
         self, members_added: ChannelAccount, turn_context: TurnContext
