@@ -1,6 +1,6 @@
 # bot imports
 from botbuilder.core import ActivityHandler, TurnContext, CardFactory
-from botbuilder.schema import ChannelAccount, Activity, ActivityTypes
+from botbuilder.schema import ChannelAccount, Activity, ActivityTypes, Attachment
 
 # system imports
 import json
@@ -54,6 +54,17 @@ class MyBot(ActivityHandler):
                 # )
 
                 await self.send_intro_card(turn_context=turn_context)
+
+
+    async def handle_attachment(self, attachment: Attachment, turn_context: TurnContext):
+        if attachment.content_type == "application/vnd.microsoft.teams.file.download.info":
+            download_url = attachment.content['downloadUrl']
+            file_name  = attachment.name
+            file_type = attachment.content_type
+
+            await turn_context.send_activity(f"file received")
+        else:
+            await turn_context.send_activity("Unsupported attachment type.")
 
     async def send_intro_card(self, turn_context: TurnContext):
         template_json = ""
