@@ -75,9 +75,14 @@ class MyBot(ActivityHandler):
         await turn_context.send_activity(intro_card)
 
     async def _add_typing_activity(self, turn_context: TurnContext):
-        typing_activity = Activity(type=ActivityTypes.typing)
-        await turn_context.send_activity(typing_activity)
-        await asyncio.sleep(0.2)
+
+        async def send_typing_activity():
+            while True:
+                typing_activity = Activity(type=ActivityTypes.typing)
+                await turn_context.send_activity(typing_activity)
+                await asyncio.sleep(20)
+                
+        asyncio.create_task(send_typing_activity())
 
     async def _fetch_data(self, query: str):
         api_url = f"http://18.209.65.205:5000/api/answer?collectionName=polaris&input=${query}"
