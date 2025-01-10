@@ -91,7 +91,7 @@ class MyBot(ActivityHandler):
                 typing_activity = Activity(type=ActivityTypes.typing)
                 await turn_context.send_activity(typing_activity)
                 await asyncio.sleep(20)
-                
+
         asyncio.create_task(send_typing_activity())
 
     async def _fetch_data(self, query: str):
