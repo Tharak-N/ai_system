@@ -87,10 +87,10 @@ class MyBot(ActivityHandler):
     async def _add_typing_activity(self, turn_context: TurnContext):
 
         async def send_typing_activity():
-            while not self._stop_typing_event.set():
+            while not self._stop_typing_event.is_set():
                 typing_activity = Activity(type=ActivityTypes.typing)
                 await turn_context.send_activity(typing_activity)
-                await asyncio.sleep(20)
+                await asyncio.sleep(2)
 
         asyncio.create_task(send_typing_activity())
 
