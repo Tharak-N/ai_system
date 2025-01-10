@@ -17,7 +17,13 @@ INTRO_CARD_TEMPLATE_FILE_PATH = os.path.join(
 
 class MyBot(ActivityHandler):
 
+    def __init__(self):
+        super().__init__()
+        self._stop_typing_event = asyncio.Event()
+
+
     async def on_message_activity(self, turn_context: TurnContext):
+        self._stop_typing_event.clear()
         if turn_context.activity.value:
             action_value = turn_context.activity.value.get("action")
             await self._add_typing_activity(turn_context=turn_context)
@@ -45,7 +51,11 @@ class MyBot(ActivityHandler):
             #     await self.handle_attachments(turn_context)
             # else:
             await self._add_typing_activity(turn_context=turn_context)
-            http_response = await self._fetch_data(turn_context.activity.text)
+            try:
+                http_response = await self._fetch_data(turn_context.activity.text)
+            finally: 
+                self._stop_typing_event.set()
+
             await turn_context.send_activity(http_response)
 
     async def on_members_added_activity(
@@ -77,7 +87,7 @@ class MyBot(ActivityHandler):
     async def _add_typing_activity(self, turn_context: TurnContext):
 
         async def send_typing_activity():
-            while True:
+            while not self._stop_typing_event.set():
                 typing_activity = Activity(type=ActivityTypes.typing)
                 await turn_context.send_activity(typing_activity)
                 await asyncio.sleep(20)

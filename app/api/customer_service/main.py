@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from .routes import local_llm, teams_bot
+from .routes import local_llm, teams_bot, whatsapp_bot
 
 router = APIRouter(
     prefix="/customerservice",
@@ -10,3 +10,4 @@ router = APIRouter(
 
 router.include_router(local_llm.router)
 router.include_router(teams_bot.router)
+router.include_router(whatsapp_bot.router)
