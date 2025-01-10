@@ -1,4 +1,3 @@
-
 from fastapi import APIRouter, Request
 from fastapi.responses import PlainTextResponse
 
@@ -13,7 +12,7 @@ router = APIRouter(
 @router.get("/")
 async def whatsapp_bot(request: Request) -> str:
     verification_token = "narayana"
-    
+
     hub = request.query_params
     mode = hub.get("hub.mode")
     challenge = hub.get("hub.challenge")
