@@ -19,10 +19,10 @@ class MyBot(ActivityHandler):
 
     def __init__(self):
         super().__init__()
-        self._stop_typing_event = asyncio.Event()
+        self._typing_task = asyncio.Event()
+
 
     async def on_message_activity(self, turn_context: TurnContext):
-        self._stop_typing_event.clear()
         if turn_context.activity.value:
             action_value = turn_context.activity.value.get("action")
             await self._add_typing_activity(turn_context=turn_context)
@@ -52,8 +52,8 @@ class MyBot(ActivityHandler):
             await self._add_typing_activity(turn_context=turn_context)
             try:
                 http_response = await self._fetch_data(turn_context.activity.text)
-            finally:
-                self._stop_typing_event.set()
+            finally: 
+                await self._stop_typing_activity()
 
             await turn_context.send_activity(http_response)
 
@@ -83,15 +83,29 @@ class MyBot(ActivityHandler):
 
         await turn_context.send_activity(intro_card)
 
+    async def _stop_typing_activity(self):
+        if self._typing_task:
+            self._typing_task.cancel()
+            try:
+                await self._typing_task  # Ensure the task is awaited to handle cancellation
+            except asyncio.CancelledError:
+                pass  # Expected when the task is canceled
+            self._typing_task = None  # Reset the reference
+
     async def _add_typing_activity(self, turn_context: TurnContext):
 
         async def send_typing_activity():
-            while not self._stop_typing_event.is_set():
-                typing_activity = Activity(type=ActivityTypes.typing)
-                await turn_context.send_activity(typing_activity)
-                await asyncio.sleep(2)
+            try:
+                while True:
+                    typing_activity = Activity(type=ActivityTypes.typing)
+                    await turn_context.send_activity(typing_activity)
+                    await asyncio.sleep(2)  # Short interval for better UX
+            except asyncio.CancelledError:
+                # Exit the loop gracefully when the task is canceled
+                pass
 
-        asyncio.create_task(send_typing_activity())
+        # Create the typing task
+        self._typing_task = asyncio.create_task(send_typing_activity())
 
     async def _fetch_data(self, query: str):
         api_url = f"http://18.209.65.205:5000/api/answer?collectionName=polaris&input=${query}"
