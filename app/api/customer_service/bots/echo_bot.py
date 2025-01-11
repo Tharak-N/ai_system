@@ -21,7 +21,6 @@ class MyBot(ActivityHandler):
         super().__init__()
         self._typing_task = asyncio.Event()
 
-
     async def on_message_activity(self, turn_context: TurnContext):
         if turn_context.activity.value:
             action_value = turn_context.activity.value.get("action")
@@ -52,7 +51,7 @@ class MyBot(ActivityHandler):
             await self._add_typing_activity(turn_context=turn_context)
             try:
                 http_response = await self._fetch_data(turn_context.activity.text)
-            finally: 
+            finally:
                 await self._stop_typing_activity()
 
             await turn_context.send_activity(http_response)

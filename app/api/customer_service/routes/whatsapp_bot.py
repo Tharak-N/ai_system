@@ -27,7 +27,9 @@ async def whatsapp_webhook(request: Request):
         if "recommendation" in incoming_message.lower():
             reply = "Sure! What product category are you interested in?"
         elif "laptops" in incoming_message.lower():
-            reply = "<b>We recommend the XYZ Laptop. It has great specs for its price</b>!"
+            reply = (
+                "<b>We recommend the XYZ Laptop. It has great specs for its price</b>!"
+            )
             # message = response.message("Our top pick for laptops:")
             # message.media("https://example.com/abc-laptop-image.jpg")  # Replace with your image URL
             # message.body(
