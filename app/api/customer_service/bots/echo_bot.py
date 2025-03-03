@@ -107,7 +107,9 @@ class MyBot(ActivityHandler):
         self._typing_task = asyncio.create_task(send_typing_activity())
 
     async def _fetch_data(self, query: str):
-        api_url = f"http://18.209.65.205:5000/api/answer?collectionName=HR&input=${query}"
+        api_url = (
+            f"http://18.209.65.205:5000/api/answer?collectionName=HR&input=${query}"
+        )
 
         async with aiohttp.ClientSession() as session:
             try:
