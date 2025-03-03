@@ -11,7 +11,7 @@ router = APIRouter(prefix="/local/phi3", tags=[], dependencies=[])
 @router.post("/", response_class=StreamingResponse)
 async def local_phi3_response(body: Phi3Model):
 
-    client = OpenAI(base_url="http://192.168.0.130:1235/v1/", api_key="llm-studio")
+    client = OpenAI(base_url="http://192.168.11.70:1234/v1/", api_key="llm-studio")
 
     try:
         completion = client.chat.completions.create(
